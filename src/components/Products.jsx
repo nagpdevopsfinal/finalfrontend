@@ -11,7 +11,8 @@ export default function Products() {
     const getProducts = async () => {
       setLoading(true);
       // const response = await fetch("https://fakestoreapi.com/products");
-      const response = await fetch("http://localhost:4000/api/v1/products");
+      // const response = await fetch("http://localhost:4000/api/v1/products");
+      const response = await fetch("http://104.197.243.96:4000/api/v1/products");
 
       if (componentMounted) {
         let test = (await response.json()).products;
