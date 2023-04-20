@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - name: react-master-amitsharma09
-          image: nagpdevopsfinal/i-amitsharma09-frontend:V2
+          image: nagpdevopsfinal/i-amitsharma09-frontend:V3
           ports:
             - name: http
               containerPort: 3000
