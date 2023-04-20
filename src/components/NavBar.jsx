@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginButton from "./loginButton";
+import LogoutButton from "./LogoutButton";
 // import { useAuth0 } from "@auth0/auth0-react";
 // import LoginButton from "./Login";
 
@@ -55,6 +56,9 @@ export default function NavBar() {
                 <i className="fa fa-shopping-cart me-1"></i> Cart (
                 {state.length})
               </NavLink> */}
+            </div>
+            <div className="nav-link buttons">
+              <LogoutButton />
             </div>
           </div>
         </div>
