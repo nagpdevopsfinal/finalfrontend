@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
+import { NavLink } from "react-router-dom/cjs/react-router-dom";
 
 export default function Products() {
   const [data, setData] = useState([]);
@@ -16,14 +17,10 @@ export default function Products() {
 
       if (componentMounted) {
         let test = (await response.json()).products;
-        // setData((await response.json()).products);
         test = test.map((data) => data._source)
-        console.log(test)
         setData(test);
         setFilter(test);
-        // setFilter((await response.json()).products);
         setLoading(false);
-        console.log(filter);
       }
     };
     getProducts();
@@ -69,38 +66,18 @@ export default function Products() {
     return (
       <>
         <div className="buttons d-flex justify-content-center mb-5 pb-5">
-          <button
-            className="btn btn-outline-dark me-2"
-            onClick={() => setFilter(data)}
-          >
-            All
-          </button>
-          <button
-            className="btn btn-outline-dark me-2"
-            onClick={() => filterProduct("men's clothing")}
-          >
-            Men
-          </button>
-          <button
-            className="btn btn-outline-dark me-2"
-            onClick={() => filterProduct("women's clothing")}
-          >
-            Women
-          </button>
-          <button
-            className="btn btn-outline-dark me-2"
-            onClick={() => filterProduct("jewelery")}
-          >
-            Jewelery
-          </button>
-          <button
-            className="btn btn-outline-dark me-2"
-            onClick={() => filterProduct("electronics")}
-          >
-            Electronincs
-          </button>
-          <input type="text" placeholder="Search" onChange={(e) => handleSearch(e)}>
-          </input>
+
+          <button className="btn btn-outline-dark me-2" onClick={() => setFilter(data)}> All </button>
+
+          <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("men's clothing")}> Men </button>
+
+          <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")} > Women </button>
+
+          <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("jewelery")} > Jewelery </button>
+
+          <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}> Electronincs </button>
+
+          <input type="text" placeholder="Search" onChange={(e) => handleSearch(e)}> </input>
         </div>
         {filter && filter.map((productDetails) => {
           const product = productDetails;
@@ -108,24 +85,14 @@ export default function Products() {
             <>
               <div className="col-md-3 mb-4">
                 <div className="card h-100 text-center p-4" key={product.id}>
-                  <img
-                    src={product.image}
-                    height="250px"
-                    className="card-img-top"
-                    alt={product.title}
-                  />
+                  <img src={product.image} height="250px" className="card-img-top" alt={product.title} />
+
                   <div className="card-body">
-                    <h5 className="card-title mb-0">
-                      {product.title?.substring(0, 12)}...
-                    </h5>
+                    <h5 className="card-title mb-0"> {product.title?.substring(0, 12)}... </h5>
                     <p className="card-text lead fw-bold">₹{product.price}</p>
-                    {/* <NavLink
-                      to={`/products/${product.id}`}
-                      className="btn  btn-outline-dark"
-                    >
-                      Buy Now
-                    </NavLink> */}
+                    <NavLink to={`/products/${product.id}`} className="btn  btn-outline-dark" > See Details </NavLink>
                   </div>
+
                 </div>
               </div>
             </>

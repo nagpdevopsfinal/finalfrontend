@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
 import { useParams } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
 export default function Product() {
@@ -10,6 +10,7 @@ export default function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
 
   const dispatch = useDispatch();
 
@@ -20,9 +21,10 @@ export default function Product() {
   useEffect(() => {
     const getProduct = async () => {
       setLoading(true);
-      // const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-      const response = await fetch(`http://localhost:4000/api/v1/products/${id}`);
-      setProduct((await response.json()).products);
+      const response = await fetch(`http://104.197.243.96:4000/api/v1/products`);
+      let test = (await response.json()).products;
+      test = test.find((data) => data._source.id == id);
+      setProduct(test?._source);
       setLoading(false);
     };
     getProduct();
@@ -65,17 +67,7 @@ export default function Product() {
           </p>
           <h3 className="display-6 fw-bold my-4">₹ {product.price}</h3>
           <p className="lead">{product.description}</p>
-          <button
-            className="btn btn-outline-dark px-4 py-2"
-            onClick={() => {
-              addProduct(product);
-            }}
-          >
-            Add to cart
-          </button>
-          <NavLink to="/cart" className="btn btn-dark ms-2 px-3 py-2">
-            Go to cart
-          </NavLink>
+          
         </div>
       </>
     );
