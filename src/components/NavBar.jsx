@@ -13,7 +13,7 @@ export default function NavBar() {
     <nav className="navbar navbar-expand-lg bg-white navbar-light bg-dark py-3 shadow-sm">
       <div className="container">
         <NavLink className="navbar-brand" to="/">
-          Ecommerce
+          Nagarro-AmCart
         </NavLink>
         <button
           class="navbar-toggler"
@@ -34,12 +34,12 @@ export default function NavBar() {
             <NavLink className="nav-link" to="/products">
               Products
             </NavLink>
-            <NavLink className="nav-link" to="/about">
+            {/* <NavLink className="nav-link" to="/about">
               About
             </NavLink>
             <NavLink className="nav-link" to="/contact">
               Contact
-            </NavLink>
+            </NavLink> */}
             <div className="nav-link buttons">
               {/* <NavLink to="/login" className="btn btn-outline-dark">
                 <i className="fa fa-sign-in me-1"></i> Login
