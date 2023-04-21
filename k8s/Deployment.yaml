@@ -32,7 +32,7 @@ metadata:
   labels:
     app: react-master-amitsharma09
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       app: react-master-amitsharma09
@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - name: react-master-amitsharma09
-          image: nagpdevopsfinal/i-amitsharma09-frontend:V3
+          image: nagpdevopsfinal/i-amitsharma09-frontend:V4
           ports:
             - name: http
               containerPort: 3000
